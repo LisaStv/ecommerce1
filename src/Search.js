@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Grid from '@mui/material/Grid';
 import Button from "@mui/material/Button";
 
-export default function Searcher({cerca, text, setText}) {
+export default function Searcher({setSearchQuery, text, setText}) {
 
   return (
     <Grid
@@ -16,7 +16,7 @@ export default function Searcher({cerca, text, setText}) {
       id="outlined-basic"
       label="Outlined"
       onChange={(e) => {
-        cerca(e.target.value);
+        setSearchQuery(e.target.value);
         setText(e.target.value);
       }}
       value={text}
@@ -25,7 +25,7 @@ export default function Searcher({cerca, text, setText}) {
               <Button
                 variant="contained"
                 onClick={(text) => {
-                  cerca("");
+                  setSearchQuery("");
                   setText("");
                 }}
               >

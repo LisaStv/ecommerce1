@@ -18,15 +18,15 @@ export default function ButtonGrp({toggle, select, selected, setSelected}) {
       }}
     >
       <ButtonGroup size="small" aria-label="small button group">
-        <Button key="one" onClick={() => { toggle("in"); {setSelected("in")};}} variant={selected === "in" ? "contained" : "outlined"}>
+        <Button key="one" onClick={() => { toggle("in"); {setSelected("in")}; }} variant={selected === "in" ? "contained" : "outlined"}>
           IN STOCK
         </Button>
         ,
-        <Button key="two" onClick={() => { toggle("out"); select("out");}} variant={selected === "out" ? "contained" : "outlined"}>
+        <Button key="two" onClick={() => { toggle("out"); {setSelected("out")};}} variant={selected === "out" ? "contained" : "outlined"}>
           OUT OF STOCK
         </Button>
         ,
-        <Button key="three" onClick={() => { toggle("all"); select("all");}} variant={selected === "all" ? "contained" : "outlined"}>
+        <Button key="three" onClick={() => { toggle("all"); {setSelected("all")};}} variant={selected === "all" ? "contained" : "outlined"}>
           ALL
         </Button>
         ,

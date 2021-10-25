@@ -8,6 +8,8 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import BtnGrigio from "./BtnGrigio.js";
+import products from "./products.json";
+import CardActionArea from '@mui/material/CardActionArea';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -16,11 +18,12 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function SingleCard({nome, prezzo, stock}) {
+export default function SingleCard({prod}, props) {
   return (
-      <Grid item xs={3} md={3}>
+    <Grid item xs={3} md={3}>
         <Item>
           <Card variant="outlined">
+          <CardActionArea href={`/prod/${prod.UPC}`}>
             <React.Fragment>
               <CardMedia
                 component="img"
@@ -30,17 +33,16 @@ export default function SingleCard({nome, prezzo, stock}) {
               />
               <CardContent>
                 <Typography variant="h4" component="div">
-                  {nome}
+                  {prod.name}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  $ {prezzo}
+                  $ {prod.price.current.value}
                 </Typography>
               </CardContent>
-              <CardActions>
-                {stock > 0 && <BtnGrigio />}
-              </CardActions>
+              <CardActions>{prod.availability.stock > 0 && <BtnGrigio />}</CardActions>
             </React.Fragment>
-          </Card>
+          </CardActionArea></Card>
         </Item>
     </Grid>
-  );}
+  );
+}

@@ -11,7 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 
 
-export default function Bar({ toggle, cerca, select, selected, setSelected }) {
+export default function Bar({ toggle, setSearchQuery, select, selected, setSelected }) {
   const [text, setText] = useState("");
   return (
     <React.Fragment>
@@ -39,7 +39,7 @@ export default function Bar({ toggle, cerca, select, selected, setSelected }) {
             />
           </Grid>
           <Grid item lg={4}>
-            <Searcher text={text} cerca={cerca} setText={setText} />
+            <Searcher text={text} setSearchQuery={setSearchQuery} setText={setText} />
           </Grid>
           <Divider />
         </Grid>
