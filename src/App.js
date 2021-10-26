@@ -10,12 +10,10 @@ import {
 
 function App() {
   return (
-    <HashRouter>
       <Switch>
     <Route path="/prod/:id"><Dettaglio /></Route>
     <Route path="/"><Home /></Route>
       </Switch>
-  </HashRouter>
   );
 }
 
