@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import BtnGrigio from "./BtnGrigio.js";
 import CardActionArea from '@mui/material/CardActionArea';
+import { useHistory } from 'react-router-dom';
 
 // const Item = styled(Paper)(({ theme }) => ({
 //   ...theme.typography.body2,
@@ -18,10 +19,12 @@ import CardActionArea from '@mui/material/CardActionArea';
 // }));
 
 export default function SingleCard({prod}) {
+  var history = useHistory();
   return (
     <Grid item xs={3} md={3}>
           <Card sx={{ m: 1}}>
-          <CardActionArea href={`/#/prod/${prod.UPC}`}>
+          {/* <CardActionArea href={`/#/prod/${prod.UPC}`}> */}
+          <CardActionArea onClick={() => history.push(`/prod/${prod.UPC}`)} >
             <React.Fragment>
               <CardMedia
                 component="img"
