@@ -21,7 +21,7 @@ export default function SingleCard({prod}) {
   return (
     <Grid item xs={3} md={3}>
           <Card sx={{ m: 1}}>
-          <CardActionArea href={`/prod/${prod.UPC}`}>
+          <CardActionArea href={`/#/prod/${prod.UPC}`}>
             <React.Fragment>
               <CardMedia
                 component="img"

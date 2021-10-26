@@ -3,18 +3,19 @@ import "./App.css";
 import Home from "./Home.js";
 import Dettaglio from "./Dettaglio.js";
 import {
-  BrowserRouter as Router,
+  HashRouter,
+  HashRouter as Router,
   Route, Switch
 } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
+    <HashRouter>
       <Switch>
     <Route path="/prod/:id"><Dettaglio /></Route>
     <Route path="/"><Home /></Route>
       </Switch>
-  </Router>
+  </HashRouter>
   );
 }
 
