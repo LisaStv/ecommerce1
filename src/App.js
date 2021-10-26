@@ -1,10 +1,6 @@
 import * as React from "react";
-import { useState } from "react";
 import "./App.css";
 import Home from "./Home.js";
-import SingleCard from "./SingleCard.js";
-import Grid from "@mui/material/Grid";
-import Bar from "./Bar.js";
 import Dettaglio from "./Dettaglio.js";
 import {
   BrowserRouter as Router,

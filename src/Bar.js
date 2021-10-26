@@ -5,9 +5,6 @@ import Grid from "@mui/material/Grid";
 import ButtonGrp from "./ButtonGrp.js";
 import Searcher from "./Search.js";
 import CardMedia from "@mui/material/CardMedia";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 
 

@@ -8,7 +8,6 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import BtnGrigio from "./BtnGrigio.js";
-import products from "./products.json";
 import CardActionArea from '@mui/material/CardActionArea';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -18,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function SingleCard({prod}, props) {
+export default function SingleCard({prod}) {
   return (
     <Grid item xs={3} md={3}>
         <Item>

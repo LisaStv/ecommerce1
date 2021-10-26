@@ -1,17 +1,12 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import CardMedia from "@mui/material/CardMedia";
-import BtnGrigio from "./BtnGrigio.js";
 import { useState } from "react";
 import SingleCard from "./SingleCard.js";
 import Bar from "./Bar.js";
 import products from "./products.json";
+import Footer from "./Footer.js";
 
-export default function Home({cerca, select}) {
+export default function Home({select}) {
   const [arrProds, setArrProds] = useState(products);
   const [searchQuery, setSearchQuery] = useState("");
   const [selected, setSelected] = useState("all");
@@ -48,6 +43,7 @@ export default function Home({cerca, select}) {
             />
           ))}
       </Grid>
+      <Footer />
     </div>
   );
 }
