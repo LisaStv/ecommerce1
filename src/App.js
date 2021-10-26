@@ -10,10 +10,12 @@ import {
 
 function App() {
   return (
+    <Router baseline="/">
       <Switch>
     <Route path="/prod/:id"><Dettaglio /></Route>
     <Route path="/"><Home /></Route>
       </Switch>
+    </Router>
   );
 }
 
