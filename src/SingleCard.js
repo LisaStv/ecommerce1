@@ -20,18 +20,17 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function SingleCard({prod}) {
   return (
     <Grid item xs={3} md={3}>
-        <Item>
-          <Card variant="outlined">
+          <Card sx={{ m: 1}}>
           <CardActionArea href={`/prod/${prod.UPC}`}>
             <React.Fragment>
               <CardMedia
                 component="img"
-                height="194"
-                image="https://mui.com/static/images/cards/paella.jpg"
-                alt="Paella dish"
+                height="350"
+                image="https://via.placeholder.com/350"
+                alt="Alt"
               />
               <CardContent>
-                <Typography variant="h4" component="div">
+                <Typography variant="h5" component="div">
                   {prod.name}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -41,7 +40,6 @@ export default function SingleCard({prod}) {
               <CardActions>{prod.availability.stock > 0 && <BtnGrigio />}</CardActions>
             </React.Fragment>
           </CardActionArea></Card>
-        </Item>
     </Grid>
   );
 }
