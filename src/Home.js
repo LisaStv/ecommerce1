@@ -23,14 +23,13 @@ export default function Home() {
   return (
     <div>
       <Bar
-        content="text"
         toggle={toggle}
         setSearchQuery={setSearchQuery}
         // select={select}
         selected={selected}
         setSelected={setSelected}
       />
-      <Grid container>
+      <Grid sx={{mb:'auto'}} container minHeight="100vh">
         {arrProds.filter((prod) =>
             prod.name.toLowerCase().includes(searchQuery.toLowerCase())
           )

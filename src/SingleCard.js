@@ -10,12 +10,12 @@ import CardMedia from "@mui/material/CardMedia";
 import BtnGrigio from "./BtnGrigio.js";
 import CardActionArea from '@mui/material/CardActionArea';
 
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "start",
-  color: theme.palette.text.secondary,
-}));
+// const Item = styled(Paper)(({ theme }) => ({
+//   ...theme.typography.body2,
+//   padding: theme.spacing(1),
+//   textAlign: "start",
+//   color: theme.palette.text.secondary,
+// }));
 
 export default function SingleCard({prod}) {
   return (
