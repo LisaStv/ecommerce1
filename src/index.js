@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {
   HashRouter,
-  HashRouter as Router,
   Route,
   Switch,
 } from "react-router-dom";
