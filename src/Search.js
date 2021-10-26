@@ -13,7 +13,7 @@ export default function Searcher({ setSearchQuery, text, setText }) {
         className="input"
         // value={term}
         id="outlined-basic"
-        label="Outlined"
+        label="search"
         onChange={(e) => {
           setSearchQuery(e.target.value);
           setText(e.target.value);

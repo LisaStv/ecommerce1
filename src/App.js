@@ -4,14 +4,16 @@ import Home from "./Home.js";
 import Dettaglio from "./Dettaglio.js";
 import {
   BrowserRouter as Router,
-  Route,
+  Route, Switch
 } from "react-router-dom";
 
 function App() {
   return (
     <Router>
-    <Route exact path="/" component={Home} />
-    <Route exact path="/prod/:id" component={Dettaglio} />
+      <Switch>
+    <Route path="/prod/:id"><Dettaglio /></Route>
+    <Route path="/"><Home /></Route>
+      </Switch>
   </Router>
   );
 }

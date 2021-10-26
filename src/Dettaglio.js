@@ -1,10 +1,12 @@
 import * as React from "react";
+import { useParams } from "react-router";
 import products from "./products.json";
 import SingleCard from "./SingleCard.js";
 
 export default function Dettaglio(props) {
+  const { id } = useParams()
     return (
-        <SingleCard prod={products.find((prodo => prodo.UPC === props.match.params.id ))}
+        <SingleCard prod={products.find((prodo => prodo.UPC === id ))}
         />
       );
     }

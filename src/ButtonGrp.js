@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
-export default function ButtonGrp({toggle, select, selected, setSelected}) {
+export default function ButtonGrp({toggle, selected, setSelected}) {
 
   return (
     <Box
@@ -12,6 +12,7 @@ export default function ButtonGrp({toggle, select, selected, setSelected}) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        marginTop: 2,
         "& > *": {
           m: 1,
         },

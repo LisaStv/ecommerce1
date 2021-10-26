@@ -6,7 +6,7 @@ import Bar from "./Bar.js";
 import products from "./products.json";
 import Footer from "./Footer.js";
 
-export default function Home({select}) {
+export default function Home() {
   const [arrProds, setArrProds] = useState(products);
   const [searchQuery, setSearchQuery] = useState("");
   const [selected, setSelected] = useState("all");
@@ -26,7 +26,7 @@ export default function Home({select}) {
         content="text"
         toggle={toggle}
         setSearchQuery={setSearchQuery}
-        select={select}
+        // select={select}
         selected={selected}
         setSelected={setSelected}
       />

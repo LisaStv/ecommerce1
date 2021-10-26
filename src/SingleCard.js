@@ -36,8 +36,8 @@ export default function SingleCard({prod}) {
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                   $ {prod.price.current.value}
                 </Typography>
+                <CardActions>{prod.availability.stock > 0 && <BtnGrigio />}</CardActions>
               </CardContent>
-              <CardActions>{prod.availability.stock > 0 && <BtnGrigio />}</CardActions>
             </React.Fragment>
           </CardActionArea></Card>
     </Grid>

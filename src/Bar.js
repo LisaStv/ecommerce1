@@ -31,7 +31,7 @@ export default function Bar({ toggle, setSearchQuery, select, selected, setSelec
           <Grid item lg={3.4}>
             <ButtonGrp
               toggle={toggle}
-              select={select}
+              // select={select}
               selected={selected}
               setSelected={setSelected}
             />
