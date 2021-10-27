@@ -3,15 +3,12 @@ import "./App.css";
 import Home from "./Home.js";
 import Dettaglio from "./Dettaglio.js";
 import {
-  HashRouter,
-  HashRouter as Router,
   Route,
   Switch,
 } from "react-router-dom";
 
 function App() {
   return (
-    // <Router>
       <Switch>
         <Route path="/prod/:id">
           <Dettaglio />
@@ -20,7 +17,6 @@ function App() {
           <Home />
         </Route>
       </Switch>
-    // </Router>
   );
 }
 
