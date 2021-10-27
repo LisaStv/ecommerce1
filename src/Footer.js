@@ -20,7 +20,7 @@ export default function Footer() {
         // position: 'fixed',  
             }}
     >
-      <Link target="_blank" href="#">TWITTER</Link>
+      <Link target="_blank" href="#">TWITTER</Link> |
       <Link href="#">FACEBOOK</Link>
     </Grid>
   );
