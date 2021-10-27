@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./App.css";
 import Grid from "@mui/material/Grid";
+import Link from '@mui/material/Link';
 
 export default function Footer() {
   return (
@@ -19,7 +20,8 @@ export default function Footer() {
         // position: 'fixed',  
             }}
     >
-      TWITTER | FACEBOOK
+      <Link target="_blank" href="#">TWITTER</Link>
+      <Link href="#">FACEBOOK</Link>
     </Grid>
   );
 }

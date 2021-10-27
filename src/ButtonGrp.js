@@ -4,8 +4,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
-export default function ButtonGrp({toggle, selected, setSelected}) {
-
+export default function ButtonGrp({ toggle, selected, setSelected }) {
   return (
     <Box
       sx={{
@@ -19,17 +18,31 @@ export default function ButtonGrp({toggle, selected, setSelected}) {
       }}
     >
       <ButtonGroup size="small" aria-label="small button group">
-        <Button key="one" onClick={() => { toggle("in"); {setSelected("in")}; }} variant={selected === "in" ? "contained" : "outlined"}>
+        <Button
+          key="one"
+          onClick={() => {
+            toggle(selected === "all" ? "in" : "all");
+            {setSelected(selected === "all" ? "in" : "all");}
+          }}
+          variant={selected === "in" ? "contained" : "outlined"}
+        >
           IN STOCK
         </Button>
         ,
-        <Button key="two" onClick={() => { toggle("out"); {setSelected("out")};}} variant={selected === "out" ? "contained" : "outlined"}>
+        <Button
+          key="two"
+          onClick={() => {
+            toggle(selected === "all" ? "out" : "all");
+            {setSelected(selected === "all" ? "out" : "all");}
+          }}
+          variant={selected === "out" ? "contained" : "outlined"}
+        >
           OUT OF STOCK
         </Button>
         ,
-        <Button key="three" onClick={() => { toggle("all"); {setSelected("all")};}} variant={selected === "all" ? "contained" : "outlined"}>
+        {/* <Button key="three" onClick={() => { toggle("all"); {setSelected("all")};}} variant={selected === "all" ? "contained" : "outlined"}>
           ALL
-        </Button>
+        </Button> */}
         ,
       </ButtonGroup>
     </Box>
