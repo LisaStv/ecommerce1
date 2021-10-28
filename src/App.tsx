@@ -1,13 +1,13 @@
 import * as React from "react";
 import "./App.css";
-import Home from "./Home.js";
-import Dettaglio from "./Dettaglio.js";
+import Home from "./Home";
+import Dettaglio from "./Dettaglio";
 import {
   Route,
   Switch,
 } from "react-router-dom";
 
-function App() {
+const App: React.FC = () => {
   return (
       <Switch>
         <Route path="/prod/:id">
@@ -19,5 +19,6 @@ function App() {
       </Switch>
   );
 }
+
 
 export default App;

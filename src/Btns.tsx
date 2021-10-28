@@ -1,18 +1,22 @@
 import * as React from "react";
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
-export default function Btns({ setSearchQuery, setText }) {
+type Props = {
+  setSearchQuery: (term: string) => void
+}
+
+const Btns: React.FC<Props> = ({setSearchQuery }) => {
   return (
     <Button
       sx={{ marginTop: 2.3, marginLeft: 2 }}
       variant="contained"
-      onClick={(text) => {
+      onClick={() => {
         setSearchQuery("");
-        setText("");
       }}
     >
       Reset
     </Button>
   );
 }
+
+export default Btns;

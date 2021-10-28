@@ -4,7 +4,13 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
-export default function ButtonGrp({ toggle, selected, setSelected }) {
+type Props = {
+  selected: string;
+  setSelected: (term: string) => void;
+}
+
+const ButtonGrp: React.FC<Props> = ({ selected, setSelected }) => {
+// export default function ButtonGrp({ toggle, selected, setSelected }) {
   return (
     <Box
       sx={{
@@ -21,8 +27,8 @@ export default function ButtonGrp({ toggle, selected, setSelected }) {
         <Button
           key="one"
           onClick={() => {
-            toggle(selected === "all" ? "in" : "all");
-            {setSelected(selected === "all" ? "in" : "all");}
+            // toggle(selected === "all" ? "in" : "all");
+            setSelected(selected === "all" ? "in" : "all");
           }}
           variant={selected === "in" ? "contained" : "outlined"}
         >
@@ -32,8 +38,8 @@ export default function ButtonGrp({ toggle, selected, setSelected }) {
         <Button
           key="two"
           onClick={() => {
-            toggle(selected === "all" ? "out" : "all");
-            {setSelected(selected === "all" ? "out" : "all");}
+            // toggle(selected === "all" ? "out" : "all");
+            setSelected(selected === "all" ? "out" : "all");
           }}
           variant={selected === "out" ? "contained" : "outlined"}
         >
@@ -48,3 +54,5 @@ export default function ButtonGrp({ toggle, selected, setSelected }) {
     </Box>
   );
 }
+
+export default ButtonGrp;

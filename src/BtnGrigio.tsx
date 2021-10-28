@@ -15,14 +15,19 @@ const CustomButtonRoot = styled('button')(`
   border: none;
 `);
 
-function CustomButton(props) {
+type Props = {
+  props: string
+}
+
+const CustomButton: React.FC<Props> = (props) => {
   return <ButtonUnstyled {...props} component={CustomButtonRoot} />;
 }
 
-export default function BtnGrigio() {
+const BtnGrigio: React.FC = () => {
   return (
     <Stack spacing={2} direction="row">
-      <CustomButton>In stock</CustomButton>
+      <CustomButton props={''}>In stock</CustomButton>
     </Stack>
   );
 }
+export default BtnGrigio;

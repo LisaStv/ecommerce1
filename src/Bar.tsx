@@ -1,16 +1,20 @@
 import * as React from "react";
-import { useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import ButtonGrp from "./ButtonGrp.js";
-import Searcher from "./Search.js";
+import ButtonGrp from "./ButtonGrp";
+import Searcher from "./Search";
 import CardMedia from "@mui/material/CardMedia";
 import Divider from '@mui/material/Divider';
-import Btns from "./Btns.js";
+import Btns from "./Btns";
 
+type Props = {
+  searchQuery: string;
+  setSearchQuery: (term: string) => void;
+  selected: string;
+  setSelected: (term: string) => void;
+}
 
-export default function Bar({ toggle, setSearchQuery, select, selected, setSelected }) {
-  const [text, setText] = useState("");
+const Bar: React.FC<Props> = ({ searchQuery, setSearchQuery, selected, setSelected }) => {
   return (
     <React.Fragment>
       <Box sx={{ flexGrow: 1, alignItems: "center", display: "flex", borderBottom: 1 }}>
@@ -18,36 +22,35 @@ export default function Bar({ toggle, setSearchQuery, select, selected, setSelec
             container
             spacing={0}
         >
-          <Grid item lg={1.2}>
+          <Grid item md={1}>
             <CardMedia
               component="img"
               width="150"
               height="80"
               image="https://via.placeholder.com/150x80"
               alt="Paella dish"
-            />{" "}
+            />
           </Grid>
-          <Grid item lg={2.1}></Grid>
-          <Grid item lg={3.4}>
+          <Grid item lg={2}></Grid>
+
+          <Grid item lg={3}>
             <ButtonGrp
-              toggle={toggle}
-              // select={select}
               selected={selected}
               setSelected={setSelected}
             />
           </Grid>
-          <Grid item lg={1.5}></Grid>
-          <Grid item lg={2.5}>
-            <Searcher text={text} setSearchQuery={setSearchQuery} setText={setText} />
+          <Grid item lg={1}></Grid>
+          <Grid item lg={2}>
+            <Searcher searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           </Grid>
           <Grid item lg={1}>
-          <Btns setSearchQuery={setSearchQuery} setText={setText} />
+          <Btns setSearchQuery={setSearchQuery} />
             </Grid>
           <Divider />
         </Grid>
       </Box>
-
-      {/* </Container> */}
     </React.Fragment>
   );
 }
+
+export default Bar
