@@ -1,10 +1,25 @@
 import * as React from "react";
-import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import SingleCard from "./SingleCard";
 import Bar from "./Bar";
 import {products} from "./products";
 import Footer from "./Footer";
+import styled from 'styled-components';
+
+const NuovoGrid = styled.div`
+  padding-bottom: 80px;
+  `
+
+const DivGrande = styled.div`
+  min-height: 100vh;
+  position: relative;
+  `
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  overflow: hidden;
+  `
 
 const Home: React.FC = () => {
   // const [arrProds, setArrProds] = useState(products);
@@ -21,7 +36,7 @@ const Home: React.FC = () => {
     //   };
     
   return (
-    <div>
+    <DivGrande>
       <Bar
         // toggle={toggle}
         searchQuery={searchQuery}
@@ -29,7 +44,10 @@ const Home: React.FC = () => {
         selected={selected}
         setSelected={setSelected}
       />
-      <Grid sx={{mb:'auto'}} container minHeight="100vh">
+      <NuovoGrid>
+      <Grid 
+      // sx={{mb:'auto'}} container minHeight="100vh"
+      >
         {products
         .filter((prod) =>{           
         const inStockFilterIn = selected === "in" && prod.availability.stock > 0;
@@ -51,7 +69,8 @@ const Home: React.FC = () => {
           ))}
       </Grid>
       <Footer />
-    </div>
+      </NuovoGrid>
+    </DivGrande>
   );
 }
 

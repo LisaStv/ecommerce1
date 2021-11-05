@@ -1,56 +1,57 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import ButtonGrp from "./ButtonGrp";
 import Searcher from "./Search";
-import CardMedia from "@mui/material/CardMedia";
-import Divider from '@mui/material/Divider';
 import Btns from "./Btns";
+import styled from 'styled-components';
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  border-bottom: 1px solid black;
+`
+const GridItem = styled.div`
+`
+
+const Box = styled.div`
+`
+const CardMedia = styled.img`
+  width: 150px;
+  height: 80px;
+`
 
 type Props = {
   searchQuery: string;
   setSearchQuery: (term: string) => void;
   selected: string;
   setSelected: (term: string) => void;
-}
+};
 
-const Bar: React.FC<Props> = ({ searchQuery, setSearchQuery, selected, setSelected }) => {
+const Bar: React.FC<Props> = ({
+  searchQuery,
+  setSearchQuery,
+  selected,
+  setSelected,
+}) => {
   return (
     <React.Fragment>
-      <Box sx={{ flexGrow: 1, alignItems: "center", display: "flex", borderBottom: 1 }}>
-        <Grid 
-            container
-            spacing={0}
-        >
-          <Grid item md={1}>
-            <CardMedia
-              component="img"
-              width="150"
-              height="80"
-              image="https://via.placeholder.com/150x80"
-              alt="Paella dish"
-            />
-          </Grid>
-          <Grid item lg={2}></Grid>
-
-          <Grid item lg={3}>
-            <ButtonGrp
-              selected={selected}
-              setSelected={setSelected}
-            />
-          </Grid>
-          <Grid item lg={1}></Grid>
-          <Grid item lg={2}>
-            <Searcher searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-          </Grid>
-          <Grid item lg={1}>
-          <Btns setSearchQuery={setSearchQuery} />
-            </Grid>
-          <Divider />
-        </Grid>
+      <Box> 
+        <GridContainer>
+          <GridItem>
+            <CardMedia src="https://via.placeholder.com/150x80" alt="Placeholder" />
+          </GridItem>
+          <GridItem>
+            <ButtonGrp selected={selected} setSelected={setSelected} />
+          </GridItem>
+          <GridItem>
+            <Searcher
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            /> <Btns setSearchQuery={setSearchQuery} />
+          </GridItem>
+        </GridContainer>
       </Box>
     </React.Fragment>
   );
-}
+};
 
-export default Bar
+export default Bar;

@@ -1,24 +1,27 @@
 import * as React from "react";
 import "./App.css";
-import Grid from "@mui/material/Grid";
-import Link from "@mui/material/Link";
+import styled from 'styled-components';
+
+const Link = styled.a``
+
+const FooterGrid = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: right;
+  background-color: #bdbdbd;
+`
 
 const Footer: React.FC = () => {
   return (
-    <Grid
-      sx={{
-        p: 2,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "flex-end",
-        backgroundColor: "#bdbdbd",
-      }}
-    >
+    <FooterGrid>
       <Link target="_blank" href="#">
         TWITTER
       </Link>{" "}
       |<Link href="#">FACEBOOK</Link>
-    </Grid>
+    </FooterGrid>
   );
 };
 
