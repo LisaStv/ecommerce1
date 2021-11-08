@@ -1,7 +1,12 @@
 import React, { useState, useLayoutEffect } from "react";
 import styled from "styled-components";
 
-const RippleContainer = styled.div<{onMouseDown:any, duration:any}>`
+type RippleContainerProps = {
+  onMouseDown: any;
+  duration: number;
+}
+
+const RippleContainer = styled.div<RippleContainerProps>`
   position: absolute;
   top: 0;
   right: 0;
@@ -26,6 +31,13 @@ const RippleContainer = styled.div<{onMouseDown:any, duration:any}>`
   }
 `;
 
+type RippleCleanupProps = {
+  rippleCount: number;
+  duration: number;
+  cleanUpFunction: any;
+}
+
+// const useDebouncedRippleCleanUp: React.FC<RippleCleanupProps> = (rippleCount, duration, cleanUpFunction) => {
 const useDebouncedRippleCleanUp = (rippleCount: number, duration: number, cleanUpFunction: { (): void; (): void; }) => {
   useLayoutEffect(() => {
     let bounce: any = null;
@@ -42,14 +54,20 @@ const useDebouncedRippleCleanUp = (rippleCount: number, duration: number, cleanU
   }, [rippleCount, duration, cleanUpFunction]);
 };
 
-const Ripple = ({ duration = 850, color = "#fff" }) => {
+type RipplProp = {
+  duration?: any;
+  color?: any;
+}
+
+const Ripple: React.FC<RipplProp> = ({ duration = 850, color = "#fff" }) => {
+// const Ripple = ({ duration = 850, color = "#fff" }) => {
   const [rippleArray, setRippleArray] = useState<any>([]);
 
   useDebouncedRippleCleanUp(rippleArray.length, duration, () => {
     setRippleArray([]);
   });
 
-  const addRipple = (event: { currentTarget: { getBoundingClientRect: () => any; }; pageX: number; pageY: number; x: any, y: any, size: any, newRipple: any; }) => {
+  const addRipple = (event: { currentTarget: { getBoundingClientRect: () => any; }; pageX: number; pageY: number; x: number, y: number, size: number }) => {
     const rippleContainer = event.currentTarget.getBoundingClientRect();
     const size =
       rippleContainer.width > rippleContainer.height
@@ -57,7 +75,7 @@ const Ripple = ({ duration = 850, color = "#fff" }) => {
         : rippleContainer.height;
     const x = event.pageX - rippleContainer.x - size / 2;
     const y = event.pageY - rippleContainer.y - size / 2;
-    const newRipple: any = {
+    const newRipple = {
       x,
       y,
       size

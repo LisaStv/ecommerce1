@@ -2,77 +2,60 @@ import * as React from "react";
 import { useState } from "react";
 import SingleCard from "./SingleCard";
 import Bar from "./Bar";
-import {products} from "./products";
+import { products } from "./products";
 import Footer from "./Footer";
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const NuovoGrid = styled.div`
-  padding-bottom: 80px;
-  `
+const PaddingGrid = styled.div`
+  padding-bottom: 70px;
+`;
 
-const DivGrande = styled.div`
+const ContainerGrid = styled.div`
   min-height: 100vh;
   position: relative;
-  `
+`;
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-auto-flow: row;
   overflow: hidden;
-  `
+  padding: 8px;
+`;
 
 const Home: React.FC = () => {
-  // const [arrProds, setArrProds] = useState(products);
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selected, setSelected] = useState<string>("all");
-    // const toggle = (value: string) => {
-    //     var newArr = products.filter((prodx) => {
-    //       const inStockFilterIn = value === "in" && prodx.availability.stock > 0;
-    //       const outStockFilterOut = value === "out" && prodx.availability.stock <= 0
-    //       return value === "all" || inStockFilterIn || outStockFilterOut 
-                
-    //     });
-    //     setArrProds(newArr);
-    //   };
-    
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selected, setSelected] = useState<"all" | "in" | "out">("all");
+
   return (
-    <DivGrande>
+    <ContainerGrid>
       <Bar
-        // toggle={toggle}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         selected={selected}
         setSelected={setSelected}
       />
-      <NuovoGrid>
-      <Grid 
-      // sx={{mb:'auto'}} container minHeight="100vh"
-      >
-        {products
-        .filter((prod) =>{           
-        const inStockFilterIn = selected === "in" && prod.availability.stock > 0;
-        const outStockFilterOut = selected === "out" && prod.availability.stock <= 0
-        return selected === "all" || inStockFilterIn || outStockFilterOut }
-
-        )
-        .filter((prod) =>
-            prod.name.toLowerCase().includes(searchQuery.toLowerCase())
-          )
-          .map((produ) => (
-            // <SingleCard prod={produ}
-            <SingleCard prod={produ} />     
-              // nome={produ.name}
-              // UPC={produ.UPC}
-              // prezzo={produ.price.current.value}
-              // stock={produ.availability.stock}
-            
-          ))}
-      </Grid>
-      <Footer />
-      </NuovoGrid>
-    </DivGrande>
+      <PaddingGrid>
+        <Grid>
+          {products
+            .filter((prod) => {
+              const inStockFilterIn =
+                selected === "in" && prod.availability.stock > 0;
+              const outStockFilterOut =
+                selected === "out" && prod.availability.stock <= 0;
+              return selected === "all" || inStockFilterIn || outStockFilterOut;
+            })
+            .filter((prod) =>
+              prod.name.toLowerCase().includes(searchQuery.toLowerCase())
+            )
+            .map((produ) => (
+              <SingleCard prod={produ} />
+            ))}
+        </Grid>
+        <Footer />
+      </PaddingGrid>
+    </ContainerGrid>
   );
-}
-
+};
 
 export default Home;

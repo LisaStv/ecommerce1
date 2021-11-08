@@ -1,35 +1,35 @@
 import * as React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const TextField = styled.input`
-  font-size: 15px;
+  cursor: default;
+  font-size: 16px;
   margin-top: 8px;
-  width: 60%;
+  width: 59%;
   border: 1px solid lightgrey;
   border-radius: 4px;
   height: 1.7em;
-  padding: 16px;
+  padding: 11px 16px 16px 16px;
   vertical-align: middle;
-  float:left;
+  float: left;
   outline-color: rgb(25, 118, 210);
-  `
+`;
 
 type Props = {
-  setSearchQuery: (term: string) => void
-  searchQuery: string
-}
+  setSearchQuery: (term: any) => void;
+  searchQuery: any;
+};
 
 const Searcher: React.FC<Props> = ({ setSearchQuery, searchQuery }) => {
   return (
-    // <Grid>
-      <TextField placeholder="search"
-        onChange={(e) => {
-          setSearchQuery(e.target.value);
-        }}
-        value={searchQuery}
-      />
-    // </Grid>
+    <TextField
+      placeholder="search"
+      onChange={(e) => {
+        setSearchQuery(e.target.value);
+      }}
+      value={searchQuery}
+    />
   );
-}
+};
 
 export default Searcher;
