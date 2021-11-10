@@ -1,5 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from 'react-redux'
+import { searchConst, setSearchQuery } from './features/searchSlice'
 
 const TextField = styled.input`
   cursor: default;
@@ -15,17 +17,14 @@ const TextField = styled.input`
   outline-color: rgb(25, 118, 210);
 `;
 
-type Props = {
-  setSearchQuery: (term: any) => void;
-  searchQuery: any;
-};
-
-const Searcher: React.FC<Props> = ({ setSearchQuery, searchQuery }) => {
+const Searcher: React.FC = () => {
+  const searchQuery = useSelector(searchConst);
+  const dispatch = useDispatch()
   return (
     <TextField
       placeholder="search"
       onChange={(e) => {
-        setSearchQuery(e.target.value);
+        dispatch(setSearchQuery(e.target.value));
       }}
       value={searchQuery}
     />

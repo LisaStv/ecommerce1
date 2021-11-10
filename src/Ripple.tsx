@@ -31,7 +31,6 @@ const RippleContainer = styled.div<RippleContainerProps>`
   }
 `;
 
-// const useDebouncedRippleCleanUp: React.FC<RippleCleanupProps> = (rippleCount, duration, cleanUpFunction) => {
 const useDebouncedRippleCleanUp = (rippleCount: number, duration: number, cleanUpFunction: { (): void; (): void; }) => {
   useLayoutEffect(() => {
     let bounce: any = null;
@@ -54,7 +53,6 @@ type RipplProp = {
 }
 
 const Ripple: React.FC<RipplProp> = ({ duration = 850, color = "#fff" }) => {
-// const Ripple = ({ duration = 850, color = "#fff" }) => {
   const [rippleArray, setRippleArray] = useState<any>([]);
 
   useDebouncedRippleCleanUp(rippleArray.length, duration, () => {

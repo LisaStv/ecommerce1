@@ -2,11 +2,8 @@ import "./App.css";
 import * as React from "react";
 import styled from "styled-components";
 import Ripple from "./Ripple";
-
-type Props = {
-  selected: string;
-  setSelected: (term: "all" | "in" | "out") => void;
-};
+import { useSelector, useDispatch } from 'react-redux'
+import { filterConst, setSelected } from './features/filterSlice'
 
 type PropBut = {
   toggledBtn: boolean;
@@ -14,7 +11,7 @@ type PropBut = {
 
 const Button = styled.button<PropBut>`
   background-color: ${(props) =>
-    props.toggledBtn ? "rgb(25, 118, 210)" : "white"};
+  props.toggledBtn ? "rgb(25, 118, 210)" : "white"};
   color: ${(props) => (props.toggledBtn ? "white" : "rgb(25, 118, 210)")};
   border: 1px solid rgb(25, 118, 210);
   float: left;
@@ -28,7 +25,6 @@ const Button = styled.button<PropBut>`
   vertical-align: middle;
   text-transform: uppercase;
   padding: 10px 15px;
-  font-family: Roboto, Helvetica, Arial, sans-serif;
   border-radius: 4px 0px 0px 4px;
   overflow: hidden;
   position: relative;
@@ -37,6 +33,9 @@ const Button = styled.button<PropBut>`
   transition: 0.3s;
   &:last-child {
     border-radius: 0px 4px 4px 0px;
+  }
+  &:hover {
+    background-color: ${(props) => props.toggledBtn ? "#1565c0" : "#f6fafd"};;
   }
   &:active {
     background-color: #b4d2f1;
@@ -56,13 +55,15 @@ const ButtonGroup = styled.button`
   display: table;
 `;
 
-const ButtonGrp: React.FC<Props> = ({ selected, setSelected }) => {
+const ButtonGrp: React.FC = () => {
+  const selected = useSelector(filterConst);
+  const dispatch = useDispatch()
   return (
     <ButtonGroup>
       <Button
         toggledBtn={selected === "in"}
         onClick={() => {
-          setSelected(selected === "all" ? "in" : "all");
+          dispatch(setSelected(selected === "all" ? "in" : "all"));
         }}
       >
         IN STOCK
@@ -73,7 +74,7 @@ const ButtonGrp: React.FC<Props> = ({ selected, setSelected }) => {
         toggledBtn={selected === "out"}
         key="two"
         onClick={() => {
-          setSelected(selected === "all" ? "out" : "all");
+          dispatch(setSelected(selected === "all" ? "out" : "all"));
         }}
       >
         OUT OF STOCK

@@ -1,10 +1,12 @@
 import * as React from "react";
-import { useState } from "react";
 import SingleCard from "./SingleCard";
 import Bar from "./Bar";
-import { products } from "./products";
+import { Product } from "./products";
 import Footer from "./Footer";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { filterConst } from "./features/filterSlice";
+import { searchConst } from "./features/searchSlice";
 
 const PaddingGrid = styled.div`
   padding-bottom: 70px;
@@ -23,27 +25,26 @@ const Grid = styled.div`
   padding: 8px;
 `;
 
-const Home: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selected, setSelected] = useState<"all" | "in" | "out">("all");
+type Props = {
+  items: Product[];
+};
+
+const Home: React.FC<Props> = ({ items }) => {
+  const searchQuery = useSelector(searchConst);
+  const selected = useSelector(filterConst);
 
   return (
     <ContainerGrid>
-      <Bar
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        selected={selected}
-        setSelected={setSelected}
-      />
+      <Bar />
       <PaddingGrid>
         <Grid>
-          {products
+          {items
             .filter((prod) => {
               const inStockFilterIn =
                 selected === "in" && prod.availability.stock > 0;
               const outStockFilterOut =
                 selected === "out" && prod.availability.stock <= 0;
-              return selected === "all" || inStockFilterIn || outStockFilterOut;
+              return selected === "all" || inStockFilterIn || outStockFilterOut              
             })
             .filter((prod) =>
               prod.name.toLowerCase().includes(searchQuery.toLowerCase())

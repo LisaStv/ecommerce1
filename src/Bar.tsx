@@ -16,29 +16,17 @@ const CardMedia = styled.img`
   height: 80px;
 `;
 
-type Props = {
-  searchQuery: string;
-  setSearchQuery: (term: string) => void;
-  selected: string;
-  setSelected: (term: "all" | "in" | "out") => void;
-};
-
-const Bar: React.FC<Props> = ({
-  searchQuery,
-  setSearchQuery,
-  selected,
-  setSelected,
-}) => {
+const Bar: React.FC = () => {
   return (
     <div>
       <GridContainer>
         <CardMedia src="https://via.placeholder.com/150x80" alt="Placeholder" />
         <GridItem>
-          <ButtonGrp selected={selected} setSelected={setSelected} />
+          <ButtonGrp />
         </GridItem>
         <GridItem>
-          <Searcher searchQuery={searchQuery} setSearchQuery={setSearchQuery} />{" "}
-          <Btns setSearchQuery={setSearchQuery} />
+          <Searcher/>
+          <Btns />
         </GridItem>
       </GridContainer>
     </div>

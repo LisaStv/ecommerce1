@@ -1,6 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
 import Ripple from "./Ripple";
+import { useDispatch } from 'react-redux'
+import { setSearchQuery } from './features/searchSlice'
 
 const Button = styled.button`
   overflow: hidden;
@@ -33,16 +35,13 @@ const Button = styled.button`
   }
 `;
 
-type Props = {
-  setSearchQuery: (term: string) => void;
-};
-
-const Btns: React.FC<Props> = ({ setSearchQuery }) => {
+const Btns: React.FC = () => {
+  const dispatch = useDispatch()
   return (
     <div>
       <Button
         onClick={() => {
-          setSearchQuery("");
+          dispatch(setSearchQuery(""));
         }}
       >
         Reset <Ripple />

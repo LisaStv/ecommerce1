@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useParams } from "react-router";
-import { products } from "./products";
+import { Product } from "./products";
 import SingleCard from "./SingleCard";
 import styled from "styled-components";
 
@@ -9,15 +9,19 @@ const Grid = styled.div`
   width: 25%;
 `;
 
+type Props = {
+  items: Product[];
+}
+
 type Params = {
   id: string;
 };
 
-const Dettaglio: React.FC = () => {
+const Dettaglio: React.FC<Props> = ({items}) => {
   const { id } = useParams<Params>();
   return (
     <Grid>
-      <SingleCard prod={products.find((prodo) => prodo.UPC === id)} />
+      <SingleCard prod={items.find((prodo) => prodo.UPC === id)} />
     </Grid>
   );
 };
